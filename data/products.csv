@@ -1,0 +1,17 @@
+product_id,name,category,description,price,stock_quantity,is_active,created_at
+dcca168e-faf2-4a3d-8601-199c4507f1c0,CloudSync Pro,Backup,CloudSync Pro is a comprehensive solution for enterprise needs with advanced features and 24/7 support.,147.11,983,True,2024-12-20T17:35:43.082269
+46075146-6cfb-4eb0-989e-b39fcd0b469a,DataVault Enterprise,Storage,DataVault Enterprise is a comprehensive solution for enterprise needs with advanced features and 24/7 support.,253.11,242,True,2025-05-10T17:35:43.082304
+720bcca6-cb00-4fa3-85bf-e9f9cfc27822,SecureLink Basic,Analytics,SecureLink Basic is a comprehensive solution for enterprise needs with advanced features and 24/7 support.,524.18,556,True,2025-01-30T17:35:43.082323
+2c6ee67b-5cea-41a4-9656-a867d0042990,AnalyticsPro Suite,Backup,AnalyticsPro Suite is a comprehensive solution for enterprise needs with advanced features and 24/7 support.,408.63,59,True,2025-03-15T17:35:43.082356
+7400460a-25b7-4ede-be9d-85dbe4efea5e,BackupMaster,Storage,BackupMaster is a comprehensive solution for enterprise needs with advanced features and 24/7 support.,447.76,967,True,2024-12-09T17:35:43.082372
+bb278363-2303-4131-9acf-bd0723036525,NetworkGuard,Storage,NetworkGuard is a comprehensive solution for enterprise needs with advanced features and 24/7 support.,723.19,604,True,2025-08-04T17:35:43.082387
+6c3f9536-bd7a-4881-9fbb-00e8fb97b890,DatabaseOptimizer,Security,DatabaseOptimizer is a comprehensive solution for enterprise needs with advanced features and 24/7 support.,610.98,921,True,2024-12-28T17:35:43.082403
+dd04e97c-c640-40cf-85dd-6f80bf2324ee,CloudStorage Plus,Security,CloudStorage Plus is a comprehensive solution for enterprise needs with advanced features and 24/7 support.,257.88,197,True,2024-12-26T17:35:43.082417
+2e96e82e-ee4f-4385-b3e9-6fbd1e57e098,SecurityScanner,Backup,SecurityScanner is a comprehensive solution for enterprise needs with advanced features and 24/7 support.,951.99,906,True,2025-04-28T17:35:43.082433
+c2a07155-d00b-4b28-a051-bda86e39871c,AutoBackup Pro,Networking,AutoBackup Pro is a comprehensive solution for enterprise needs with advanced features and 24/7 support.,380.7,22,True,2025-06-03T17:35:43.082447
+25f2d7c3-7f2f-434e-b4a7-75fe125b6d8d,DataMining Tool,Storage,DataMining Tool is a comprehensive solution for enterprise needs with advanced features and 24/7 support.,354.55,1000,True,2025-01-11T17:35:43.082461
+dcc8a429-fd1a-4596-926a-da94bcd6b330,ServerMonitor,Analytics,ServerMonitor is a comprehensive solution for enterprise needs with advanced features and 24/7 support.,362.79,86,True,2025-08-17T17:35:43.082476
+6a51183c-0667-4dbb-8db4-11e952ed030e,APIGateway,Security,APIGateway is a comprehensive solution for enterprise needs with advanced features and 24/7 support.,909.57,347,True,2025-04-02T17:35:43.082498
+1e1a363c-4fe2-47d3-ac70-aa6e4f0935b8,LoadBalancer Pro,Backup,LoadBalancer Pro is a comprehensive solution for enterprise needs with advanced features and 24/7 support.,938.75,513,True,2025-08-06T17:35:43.082512
+0b02445a-8d36-48f9-9626-a95f7e9de01e,CacheOptimizer,Software,CacheOptimizer is a comprehensive solution for enterprise needs with advanced features and 24/7 support.,769.97,799,True,2025-06-28T17:35:43.082527
+4c4945b9-a176-4876-a867-5d96274f92c6,LogAnalyzer,Analytics,LogAnalyzer is a comprehensive solution for enterprise needs with advanced features and 24/7 support.,526.01,641,False,2024-11-11T17:35:43.082541
