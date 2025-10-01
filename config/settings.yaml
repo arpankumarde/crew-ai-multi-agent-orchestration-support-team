@@ -1,0 +1,224 @@
+# Settings Configuration for CrewAI Customer Service System
+
+# Application Settings
+app:
+  name: "CrewAI Customer Service"
+  version: "1.0.0"
+  debug: true
+  environment: "development"
+  log_level: "INFO"
+  max_concurrent_queries: 10
+  request_timeout: 300 # seconds
+
+# AI Model Configuration
+ai_models:
+  default_llm: "openai"
+  openai:
+    model: "gpt-4"
+    api_key: "${OPENAI_API_KEY}"
+    temperature: 0.2
+    max_tokens: 2000
+    timeout: 60
+
+  embeddings:
+    model: "text-embedding-3-small"
+    api_key: "${OPENAI_API_KEY}"
+    dimensions: 1536
+
+# Database Configuration
+database:
+  postgres:
+    host: "${POSTGRES_HOST:localhost}"
+    port: ${POSTGRES_PORT:5432}
+    database: "${POSTGRES_DB:customer_service}"
+    username: "${POSTGRES_USER:postgres}"
+    password: "${POSTGRES_PASSWORD:password}"
+    pool_size: 10
+    max_overflow: 20
+    echo: false
+
+# Vector Database Configuration
+vector_store:
+  chromadb:
+    path: "${CHROMA_DB_PATH:./storage/chroma_db}"
+    collection_name: "knowledge_base"
+    distance_function: "cosine"
+    embedding_model: "text-embedding-3-small"
+
+# Knowledge Base Configuration
+knowledge_base:
+  data_path: "./data/knowledge_base"
+  supported_formats: ["md", "txt", "pdf"]
+  chunk_size: 1000
+  chunk_overlap: 200
+  max_chunks_per_query: 5
+
+# Agent Configuration Defaults
+agents:
+  default_settings:
+    max_execution_time: 120 # seconds
+    max_retry_attempts: 3
+    memory_enabled: true
+    verbose: true
+
+  performance_monitoring:
+    enabled: true
+    metrics_collection: true
+    response_time_threshold: 10.0 # seconds
+
+# Task Configuration
+tasks:
+  default_settings:
+    timeout: 60 # seconds per task
+    retry_on_failure: true
+    max_retries: 2
+
+  workflow:
+    process_type: "sequential"
+    allow_delegation: false
+    memory_enabled: true
+
+# Tools Configuration
+tools:
+  database_tools:
+    query_timeout: 30
+    max_results: 100
+    cache_ttl: 300 # seconds
+
+  vector_search:
+    similarity_threshold: 0.7
+    max_results: 5
+    include_metadata: true
+
+  external_apis:
+    timeout: 30
+    max_retries: 3
+    backoff_factor: 2
+
+# Escalation Rules
+escalation:
+  auto_escalation_triggers:
+    low_confidence_threshold: 0.6
+    complex_query_keywords:
+      - "legal"
+      - "lawsuit"
+      - "fraud"
+      - "data breach"
+      - "emergency"
+    vip_customer_tiers: ["platinum", "enterprise"]
+
+  routing:
+    default_queue: "general_support"
+    technical_queue: "technical_support"
+    billing_queue: "billing_support"
+    escalation_queue: "tier2_support"
+
+# Quality Assurance
+quality_assurance:
+  enabled: true
+  minimum_quality_score: 7.0
+  auto_approve_threshold: 8.5
+
+  checks:
+    grammar_check: true
+    sentiment_analysis: true
+    compliance_validation: true
+    factual_accuracy: true
+
+  brand_guidelines:
+    tone: "professional_friendly"
+    max_response_length: 1000
+    required_elements: ["greeting", "solution", "next_steps"]
+
+# Monitoring and Metrics
+monitoring:
+  enabled: true
+  metrics_endpoint: "/metrics"
+  health_check_endpoint: "/health"
+
+  performance_metrics:
+    track_response_times: true
+    track_success_rates: true
+    track_escalation_rates: true
+    track_customer_satisfaction: false # requires external integration
+
+  alerting:
+    enabled: false # configure external alerting system
+    high_error_rate_threshold: 0.1
+    slow_response_threshold: 15.0
+
+# Security Settings
+security:
+  api_rate_limiting:
+    enabled: true
+    requests_per_minute: 100
+    burst_limit: 200
+
+  data_privacy:
+    mask_sensitive_data: true
+    log_customer_data: false
+    encrypt_at_rest: true
+
+  authentication:
+    required: false # set to true for production
+    jwt_secret: "${JWT_SECRET:change-this-in-production}"
+    token_expiry: 3600 # seconds
+
+# Cache Configuration
+cache:
+  redis:
+    enabled: false # set to true if using Redis
+    host: "${REDIS_HOST:localhost}"
+    port: ${REDIS_PORT:6379}
+    database: ${REDIS_DB:0}
+    ttl: 3600 # default TTL in seconds
+
+  in_memory:
+    enabled: true
+    max_size: 1000
+    ttl: 1800 # seconds
+
+# Logging Configuration
+logging:
+  level: "${LOG_LEVEL:INFO}"
+  format: "json"
+  file_path: "${LOG_FILE_PATH:./logs/app.log}"
+  max_file_size: "100MB"
+  backup_count: 5
+
+  structured_logging:
+    include_request_id: true
+    include_customer_id: true
+    include_session_id: true
+    mask_sensitive_fields: true
+
+# Feature Flags
+features:
+  experimental_agents: false
+  advanced_analytics: false
+  multilingual_support: false
+  voice_integration: false
+  sentiment_routing: true
+
+# Development Settings
+development:
+  auto_reload: true
+  debug_toolbar: true
+  mock_external_apis: false
+  sample_data_enabled: true
+
+# Production Overrides (when environment = production)
+production:
+  debug: false
+  log_level: "WARNING"
+  max_concurrent_queries: 50
+
+  security:
+    authentication:
+      required: true
+    api_rate_limiting:
+      requests_per_minute: 1000
+
+  monitoring:
+    alerting:
+      enabled: true

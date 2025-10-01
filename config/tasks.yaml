@@ -1,0 +1,118 @@
+classify_intent:
+  description: |
+    Analyze the customer query and classify the intent. Determine:
+    1. Primary intent category (billing, technical, account, product, etc.)
+    2. Urgency level (low, medium, high, urgent)
+    3. Complexity assessment (simple, moderate, complex)
+    4. Confidence score (0.0 to 1.0)
+    5. Recommended next steps
+
+    Consider the tone, specific keywords, and context clues in the customer message.
+  expected_output: |
+    A structured classification including:
+    - Intent category with confidence score
+    - Urgency and complexity levels
+    - Key entities mentioned (product names, order numbers, etc.)
+    - Recommended routing strategy
+  agent: intent_classifier
+
+retrieve_knowledge:
+  description: |
+    Search the knowledge base for information relevant to the customer query.
+    Use the classified intent to focus your search. Find:
+    1. Relevant FAQ articles
+    2. Product documentation
+    3. Troubleshooting guides
+    4. Company policies
+    5. Step-by-step procedures
+
+    Rank results by relevance and include source references.
+  expected_output: |
+    A list of relevant knowledge base articles with:
+    - Article titles and summaries
+    - Relevance scores
+    - Key excerpts that address the customer query
+    - Source references for citation
+  agent: knowledge_retriever
+  context: [classify_intent]
+
+query_database:
+  description: |
+    Based on the classified intent and customer information, query the database for:
+    1. Customer account details (if customer ID provided)
+    2. Order status and history
+    3. Product information and availability
+    4. Billing and payment records
+    5. Previous support ticket history
+
+    Only retrieve information that's relevant to addressing the customer query.
+  expected_output: |
+    Structured data including:
+    - Customer account information (if applicable)
+    - Relevant order details and status
+    - Product specifications or availability
+    - Historical context from previous interactions
+  agent: database_agent
+  context: [classify_intent]
+
+generate_response:
+  description: |
+    Synthesize information from knowledge base and database queries to create a comprehensive response.
+    The response should:
+    1. Directly address the customer's question or concern
+    2. Provide clear, actionable steps when applicable
+    3. Include relevant details from their account/orders
+    4. Maintain a professional, empathetic tone
+    5. Anticipate follow-up questions
+
+    If information is insufficient, indicate what additional details are needed.
+  expected_output: |
+    A complete customer response including:
+    - Direct answer to the customer query
+    - Step-by-step instructions (if applicable)
+    - Relevant account/order information
+    - Proactive additional information
+    - Clear next steps or call-to-action
+  agent: response_generator
+  context: [classify_intent, retrieve_knowledge, query_database]
+
+assess_escalation:
+  description: |
+    Evaluate whether the generated response adequately addresses the customer query or if escalation is needed.
+    Consider:
+    1. Response completeness and accuracy
+    2. Query complexity and customer frustration level
+    3. Account status (VIP customers, enterprise accounts)
+    4. Issue severity and business impact
+    5. Policy exceptions or edge cases
+
+    Provide escalation recommendations with reasoning.
+  expected_output: |
+    Escalation assessment including:
+    - Escalation decision (yes/no) with confidence score
+    - Reasoning for the decision
+    - Recommended escalation path (if applicable)
+    - Priority level assignment
+    - Suggested human agent specialization
+  agent: escalation_agent
+  context: [classify_intent, generate_response]
+
+quality_check:
+  description: |
+    Review the generated response for quality, accuracy, and compliance:
+    1. Factual accuracy against knowledge base
+    2. Tone and professionalism
+    3. Brand guideline compliance
+    4. Completeness of information
+    5. Grammar and clarity
+
+    Suggest improvements if needed or approve for delivery.
+  expected_output: |
+    Quality assessment including:
+    - Overall quality score (1-10)
+    - Specific issues identified (if any)
+    - Suggested improvements
+    - Compliance verification
+    - Final approval status
+  agent: quality_assurance
+  context: [generate_response, assess_escalation]
